@@ -1,0 +1,503 @@
+<jarnaby version="1.0">
+	<story>
+		<title file="lrrh_wolf_pounce.png">Little Red Riding Hood</title>
+		<image id="lrrh_intro" file="lrrh_intro.png" />
+		<image id="granny_bored" file="granny_bored.png" />
+		<image id="granny_closet_door" file="granny_closet_door.png" />
+		<image id="granny_escapes_2closet" file="granny_escapes_2closet.png" />
+		<image id="granny_eyes_open" file="granny_eyes_open.png" />
+		<image id="granny_eyes_worried" file="granny_eyes_worried.png" />
+		<image id="granny_hears_knocking" file="granny_hears_knocking.png" />
+		<image id="karl_axe_closeup" file="karl_axe_closeup.png" />
+		<image id="karl_chops_wood" file="karl_chops_wood.png" />
+		<image id="karl_coils_rope" file="karl_coils_rope.png" />
+		<image id="karl_confused" file="karl_confused.png" />
+		<image id="karl_crossing_ravine" file="karl_crossing_ravine.png" />
+		<image id="karl_dramatic_entrance" file="karl_dramatic_entrance.png" />
+		<image id="karl_closeup" file="karl_closeup.png" />
+		<image id="karl_invitation1" file="karl_invitation1.png" />
+		<image id="karl_kicks_door" file="karl_kicks_door.png" />
+		<image id="karl_listens" file="karl_listens.png" />
+		<image id="karl_pets_wolf" file="karl_pets_wolf.png" />
+		<image id="karl_rope_frays" file="karl_rope_frays.png" />
+		<image id="karl_rope_snaps" file="karl_rope_snaps.png" />
+		<image id="karl_snack1" file="karl_snack1.png" />
+		<image id="karl_snack2" file="karl_snack2.png" />
+		<image id="karl_snake_knot" file="karl_snake_knot.png" />
+		<image id="karl_swings_lasso" file="karl_swings_lasso.png" />
+		<image id="karl_thinking_before_cliff" file="karl_thinking_before_cliff.png" />
+		<image id="karl_thinks_outside_door" file="karl_thinks_outside_door.png" />
+		<image id="karl_walks_axe" file="karl_walks_axe.png" />
+		<image id="karl_wolf_runs" file="karl_wolf_runs.png" />
+		<image id="lrrh_and_mom" file="lrrh_and_mom.png" />
+		<image id="lrrh_arrives" file="lrrh_arrives.png" />
+		<image id="lrrh_back_view" file="lrrh_back_view.png" />
+		<image id="lrrh_enter_forest" file="lrrh_enter_forest.png" />
+		<image id="lrrh_foot_bed" file="lrrh_foot_bed.png" />
+		<image id="lrrh_greet_granny" file="lrrh_greet_granny.png" />
+		<image id="lrrh_granny_chat" file="lrrh_granny_chat.png" />
+		<image id="lrrh_karl_examine_closet" file="lrrh_karl_examine_closet.png" />
+		<image id="lrrh_knocks" file="lrrh_knocks.png" />
+		<image id="lrrh_looks_at_reader" file="lrrh_looks_at_reader.png" />
+		<image id="lrrh_meet_granny" file="lrrh_meet_granny.png" />
+		<image id="lrrh_meet_wolf" file="lrrh_meet_wolf.png" />
+		<image id="lrrh_pass_karl" file="lrrh_pass_karl.png" />
+		<image id="lrrh_treats_granny" file="lrrh_treats_granny.png" />
+		<image id="lrrh_wolf_ponders" file="lrrh_wolf_ponders.png" />
+		<image id="lrrh_wolf_pounce" file="lrrh_wolf_pounce.png" />
+		<image id="mans_best_friend" file="mans_best_friend.png" />
+		<image id="no_thanks" file="no_thanks.png" />
+		<image id="rope_granny_sign" file="rope_granny_sign.png" />
+		<image id="what_big_ears" file="what_big_ears.png" />
+		<image id="what_big_eyes" file="what_big_eyes.png" />
+		<image id="what_big_teeth" file="what_big_teeth.png" />
+		<image id="wolf_begging" file="wolf_begging.png" />
+		<image id="wolf_by_stump" file="wolf_by_stump.png" />
+		<image id="wolf_crosses_log" file="wolf_crosses_log.png" />
+		<image id="wolf_exhausted" file="wolf_exhausted.png" />
+		<image id="wolf_hears_knocking" file="wolf_hears_knocking.png" />
+		<image id="wolf_in_bed1" file="wolf_in_bed1.png" />
+		<image id="wolf_jump_forest" file="wolf_jump_forest.png" />
+		<image id="wolf_karl_bckgrnd" file="wolf_karl_bckgrnd.png" />
+		<image id="wolf_knocks_door" file="wolf_knocks_door.png" />
+		<image id="wolf_log_broken" file="wolf_log_broken.png" />
+		<image id="wolf_runs_in_fear" file="wolf_runs_in_fear.png" />
+		<image id="wolf_runs_scheming" file="wolf_runs_scheming.png" />
+		<image id="wolf_surprises_granny" file="wolf_surprises_granny.png" />
+		<image id="wolf_talking_2closet" file="wolf_talking_2closet.png" />
+		<image id="wolf_walks_scheming" file="wolf_walks_scheming.png" />
+		<image id="bkgd_path2house" file="bkgd_path2house.png" />
+
+		<page id="0" image_id="lrrh_intro">
+			<text>There once was a little girl who liked to wear a red coat.	Everyone called her Little Red Riding Hood.</text>
+		</page>
+		<page id="1" image_id="lrrh_and_mom">
+			<text>One day, her mother told Little Red Riding Hood, "Your
+				grandma is sick. Please bring her this basket of goodies."</text>
+			<link pageref="64" pathref="3"  text="grandma">
+			</link>
+		</page>
+		<page id="2" image_id="lrrh_enter_forest">
+			<text>Little Red Riding Hood walked into the forest on her way
+				to Grandma's house.</text>
+			<link pageref="64" pathref="3"  text="Grandma">
+			</link>
+		</page>
+		<page id="3" image_id="lrrh_pass_karl">
+			<text>She passed a woodcutter chopping wood in the distance.
+			</text>
+			<link pathref="1" pageref="26" text="woodcutter">
+				<rect x="0.25" y="0.3428" width="0.1562" height="0.2142" />
+			</link>
+		</page>
+		<page id="4" image_id="lrrh_meet_wolf">
+			<text>Along the way, she met a big grey wolf.</text>
+			<text>"Where are you going?" asked the wolf.</text>
+			<text>"To bring these goodies to my grandma!" replied Little Red
+				Riding Hood.</text>
+				<link pageref="5" pathref="2" text="wolf"></link>
+				<link pageref="64" pathref="3" text="grandma"></link>
+		</page>
+		<page id="5" image_id="lrrh_wolf_ponders">
+			<text>The wolf smelled the goodies and said, "Perhaps I should pay
+				her a visit too!"</text>
+				<link pageref="64" pathref="3" text="her"></link>
+		</page>
+		<page id="6" image_id="wolf_jump_forest">
+			<text>With that, the wolf disappeared into the forest.</text>
+						<link pageref="45" pathref="2" text="wolf">
+				<rect x="0.625" y="0.314" width="0.3125" height="0.2857" />
+			</link>
+		</page>
+		<page id="7" image_id="lrrh_arrives">
+			<text>Little Red Riding Hood continued her walk, and after
+				several minutes arrived at Grandma's house.</text>
+		</page>
+		<page id="8" image_id="lrrh_knocks">
+			<text>Knock, knock!</text>
+			<text>"Grandma! Are you in there?"</text>
+			<text>"Yes, come in, my dear!"</text>
+		</page>
+		<page id="9" image_id="lrrh_looks_at_reader">
+			<text>Grandma's voice sounded unusually deep. Maybe she is
+				sicker than expected?</text>
+		</page>
+		<page id="10" image_id="lrrh_foot_bed">
+			<text>The girl opened the door.</text>
+			<text>"Come closer, my dear."</text>
+			<link pageref="11" pathref="0" text="girl">
+				<rect x="0.0" y="0.114" width="0.313" height="0.857" />
+			</link>
+		</page>
+		<page id="11" image_id="what_big_ears">
+			<text>"Grandma, what big ears you have!"</text>
+			<text>"The better to hear you with, my dear!"</text>
+		</page>
+		<page id="12" image_id="what_big_eyes">
+			<text>"Grandma, what big eyes you have!"</text>
+			<text>"The better to see you with, my dear!"</text>
+		</page>
+		<page id="13" image_id="what_big_teeth">
+			<text>"Grandma, what big sharp teeth you have!"</text>
+			<text>"The better to eat you with, my dear!"</text>
+		</page>
+		<page id="14" image_id="lrrh_wolf_pounce">
+			<text>The wolf jumped out of the bed, ready to attack!</text>
+			<link pageref="15" pathref="2" text="wolf">
+				<rect x="0.219" y="0.143" width="0.531" height="0.371" />
+			</link>
+		</page>
+		<page id="15" image_id="karl_dramatic_entrance">
+			<text>Suddenly, the door slammed open. There was the
+				woodcutter!</text>
+			<link pageref="16" pathref="1"  text="woodcutter">
+				<rect x="0.25" y="0.086" width="0.469" height="0.714" />
+			</link>
+		</page>
+		<page id="16" image_id="karl_closeup">
+			<text>"Get away from that girl!"</text>
+		</page>
+		<page id="17" image_id="wolf_runs_in_fear">
+			<text>Scared, the wolf ran out of the house!</text>
+						<link pageref="57" pathref="2" text="wolf">
+				<rect x="0.03125" y="0.4" width="0.468" height="0.571" />
+			</link>
+		</page>
+		<page id="18" image_id="lrrh_karl_examine_closet">
+			<text>They heard a sound from inside the closet.</text>
+			<text>"Help! Help! Let me out!"</text>
+			<link pageref="19" pathref="3"  text="sound">
+				<rect x="0.4375" y="0.1714" width="0.25" height="0.4571" />
+			</link>
+		</page>
+		<page id="19" image_id="lrrh_meet_granny">
+			<text>Little Red Riding Hood opened the closet door.</text>
+		</page>
+		<page id="20" image_id="lrrh_greet_granny">
+			<text>"Thank goodness you're safe!" they both say at the same time.</text>
+		</page>
+		<page id="21" image_id="lrrh_treats_granny">
+			<text>"I brought you some goodies."</text>
+			<text>"Thank you, my dear!"</text>
+		</page>
+		<page id="22" image_id="karl_invitation1">
+			<text>"Want some beef jerky?" the woodcutter asked.</text>
+			<link pageref="23" pathref="1" text="woodcutter">
+				<rect x="0.313" y="0.229" width="0.5" height="0.457" />
+			</link>
+		</page>
+		<page id="23" image_id="no_thanks">
+			<text>"No thanks."</text>
+		</page>
+		<page id="24" image_id="karl_thinks_outside_door">
+			<text>"I believe my work here is complete."</text>
+			<text>With that, the woodcutter left the house.</text>
+			<link pageref="43" pathref="1" text="woodcutter">
+				<rect x="0.4062" y="0.3142" width="0.375" height="0.6" />
+			</link>
+		</page>
+		<page id="25" image_id="lrrh_granny_chat">
+			<text>Little Red Riding Hood and Grandma visited late into the
+				day, eating goodies and talking of their adventures.</text>
+		</page>
+		<page id="26" image_id="karl_chops_wood">
+			<text>Karl the woodcutter enjoyed his work.</text>
+			<text>"I am made to cut wood. Wood was made to be cut by me."
+			</text>
+		</page>
+		<page id="27" image_id="karl_snack1">
+			<text>After a full morning of chopping wood, Karl decided to
+				take a break.</text>
+			<text>"Time for some beef jerky!" he said.</text>
+		</page>
+		<page id="28" image_id="karl_wolf_runs">
+			<text>Before Karl could take a bite, a wolf ran past him,
+				knocking him over!</text>
+			<link pageref="47" pathref="2" text="wolf">
+				<rect x="0.3125" y="0.2857" width="0.625" height="0.4857" />
+			</link>
+		</page>
+		<page id="29" image_id="karl_confused">
+			<text>"Where is he going so quickly?"</text>
+		</page>
+		<page id="30" image_id="karl_axe_closeup">
+			<text>"There may be trouble. I'd better investigate."</text>
+		</page>
+		<page id="31" image_id="karl_thinking_before_cliff">
+			<text>He followed the wolf's path, which ended at a wide
+				ravine.</text>
+			<text>"How to cross this?"</text>
+		</page>
+		<page id="32" image_id="karl_coils_rope">
+			<text>"Luckily, I always carry a 20-foot rope in my back
+				pocket!"</text>
+		</page>
+		<page id="33" image_id="karl_swings_lasso">
+			<text>He made a lasso, and flung it across the ravine.</text>
+		</page>
+		<page id="34" image_id="rope_granny_sign">
+			<text>It caught safely on a signpost on the other side.</text>
+		</page>
+		<page id="35" image_id="karl_crossing_ravine">
+			<text>He started across, taking care to avoid the nest of
+				hungry rattlesnakes at the bottom of the ravine.</text>
+		</page>
+		<page id="36" image_id="karl_rope_frays">
+			<text>Oh no! The rope began to fray.</text>
+		</page>
+		<page id="37" image_id="karl_rope_snaps">
+			<text>SNAP!</text>
+		</page>
+		<page id="38" image_id="karl_snake_knot">
+			<text>Thinking fast, he grabbed a nearby rattlesnake and
+				tied the two ends of the rope together.</text>
+		</page>
+		<page id="39" image_id="karl_snake_knot">
+			<text>He quickly crossed the ravine to safety.</text>
+		</page>
+		<page id="40" image_id="karl_listens">
+			<text>The wolf's trail led the woodcutter to a small cottage.</text>
+			<text>He heard a scream from inside.</text>
+		</page>
+		<page id="41" image_id="karl_kicks_door">
+			<text>Not wasting time with formalities, he kicked open the
+				door.</text>
+		</page>
+		<page id="42" image_id="karl_thinks_outside_door">
+			<text>"Oh well, it's just you and me now, axe."</text>
+		</page>
+		<page id="43" image_id="karl_walks_axe">
+			<text>He walked to his favorite wood-cutting spot to relax.
+			</text>
+		</page>
+		<page id="44" image_id="karl_snack2">
+			<text>The woodcutter was just about to eat his beef jerky when he heard a
+				whimpering sound.</text>
+		</page>
+		<page id="45" image_id="wolf_runs_scheming">
+			<text>As the wolf ran, he said to himself,</text>
+			<text>"If I get to Grandma's house before she does, I'll never go
+				hungry again! I can eat Grandma for dinner, the goodies for dessert, and the little girl for breakfast!"</text>
+				<link pageref="64" pathref="3"  text="Grandma"></link>
+				<link pageref="7" pathref="0"  text="girl"></link>
+		</page>
+		<page id="46" image_id="karl_wolf_runs">
+			<text>He ran past a woodcutter, knocking him over, and kept on
+				running!</text>
+			<link pageref="29" pathref="1" text="woodcutter">
+				<rect x="0.0625" y="0.3428" width="0.5625" height="0.5714" />
+			</link>
+		</page>
+		<page id="47" image_id="wolf_crosses_log">
+			<text>The wolf ran across a hollow log spanning a ravine.</text>
+		</page>
+		<page id="48" image_id="wolf_log_broken">
+			<text>After the wolf crossed, the log crumbled and fell into the
+				ravine, angering a nest of rattlesnakes.</text>
+			<text>"Whew. I'm glad I don't have to go in there!"</text>
+		</page>
+		<page id="49" image_id="wolf_walks_scheming">
+			<text>The wolf arrived at Grandma's house.</text>
+		</page>
+		<page id="50" image_id="wolf_knocks_door">
+			<text>Knock, knock!</text>
+			<text>"Who is it?"</text>
+			<text>"It's me, the little girl in the red coat."</text>
+			<text>"Ah, Little Red Riding Hood! Come in, my dear!"</text>
+		</page>
+		<page id="51" image_id="wolf_surprises_granny">
+			<text>"Oh!"</text>
+			<text>"Now I'll eat you up!"</text>
+		</page>
+		<page id="52" image_id="granny_escapes_2closet">
+			<text>Grandma quickly jumped out of bed and into the closet,
+				shutting the door behind her.</text>
+		</page>
+		<page id="53" image_id="wolf_talking_2closet">
+			<text>"Come out of there!" the wolf demanded.</text>
+			<text>"Never!" retorted Grandma.</text>
+			<link pageref="67" pathref="3"  text="Grandma">
+				<rect x="0.688" y="0.086" width="0.25" height="0.886" />
+			</link>
+			<link pageref="54" pathref="2"  text="wolf">
+				<rect x="0.125" y="0.086" width="0.5" height="0.829" />
+			</link>
+			
+		</page>
+		<page id="54" image_id="wolf_hears_knocking">
+			<text>Knock, knock!</text>
+			<text>"Oh never mind, I'll eat her later."</text>
+		</page>
+		<page id="55" image_id="lrrh_knocks">
+			<text>"Grandma, are you in there?"</text>
+		</page>
+		<page id="56" image_id="wolf_in_bed1">
+			<text>The wolf put on Grandma's clothes and hid in the bed.</text>
+			<text>"Yes, come in, my dear!"</text>
+		</page>
+		<page id="57" image_id="wolf_exhausted">
+			<text>The wolf kept running through the forest.</text>
+		</page>
+		<page id="58" image_id="wolf_by_stump">
+			<text>Hungry and tired, he lay down next to a tree stump.
+			</text>
+		</page>
+		<page id="59" image_id="karl_snack2">
+			<text>A few minutes later, the woodcutter sat down on the stump, and
+				pulled out a piece of beef jerky.</text>
+		</page>
+		<page id="60" image_id="wolf_begging">
+			<text>The wolf perked up at the smell of food.</text>
+		</page>
+		<page id="61" image_id="wolf_begging">
+			<text>"Want some?"</text>
+		</page>
+		<page id="62" image_id="karl_pets_wolf">
+			<text>"Good doggy."</text>
+		</page>
+		<page id="63" image_id="mans_best_friend">
+			<text>Into the sunset...</text>
+		</page>
+		<page id="64" image_id="bkgd_path2house">
+			<text>"It's lonely in my little cottage."</text>
+			<text>(cough! cough!)</text>
+		</page>
+		<page id="65" image_id="granny_bored">
+			<text>"Nothing exciting ever happens out here in the forest.
+				If only I had some visitors once in a while."</text>
+			<link pageref="49" pathref="2" text="visitors">
+			</link>
+		</page>
+		<page id="66" image_id="granny_hears_knocking">
+			<text>Knock, knock!</text>
+			<text>"Oh, company!"</text>
+			<text>"Who is it?"</text>
+			<text>"It's me, the little girl in the red coat."</text>
+			<text>"Ah, Little Red Riding Hood! Come in, my dear!"</text>
+		</page>
+		<page id="67" image_id="granny_eyes_worried">
+			<text>Nervously, Grandma listened to the muffled voices
+				behind the door. Who is the wolf talking to?</text>
+				<link pageref="10" pathref="0" text="voices"></link>
+		</page>
+		<page id="68" image_id="granny_eyes_open">
+			<text>Grandma heard a loud crash! What is going on out there?
+			</text>
+			<link pageref="15" pathref="0" text="crash"></link>
+		</page>
+		<page id="69" image_id="lrrh_karl_examine_closet">
+			<text>"Help! Help! Let me out!"</text>
+		</page>
+
+		<path name="Little Red Riding Hood" id="0" default="true">
+			<pageref id="0" />
+			<pageref id="1" />
+			<pageref id="2" />
+			<pageref id="3" />
+			<pageref id="4" />
+			<pageref id="5" />
+			<pageref id="6" />
+			<pageref id="7" />
+			<pageref id="8" />
+			<pageref id="9" />
+			<pageref id="10" />
+			<pageref id="11" />
+			<pageref id="12" />
+			<pageref id="13" />
+			<pageref id="14" />
+			<pageref id="15" />
+			<pageref id="16" />
+			<pageref id="17" />
+			<pageref id="18" />
+			<pageref id="19" />
+			<pageref id="20" />
+			<pageref id="21" />
+			<pageref id="22" />
+			<pageref id="23" />
+			<pageref id="24" />
+			<pageref id="25" />
+		</path>
+		<path name="Woodcutter" id="1">
+			<pageref id="26" />
+			<pageref id="27" />
+			<pageref id="28" />
+			<pageref id="29" />
+			<pageref id="30" />
+			<pageref id="31" />
+			<pageref id="32" />
+			<pageref id="33" />
+			<pageref id="34" />
+			<pageref id="35" />
+			<pageref id="36" />
+			<pageref id="37" />
+			<pageref id="38" />
+			<pageref id="39" />
+			<pageref id="40" />
+			<pageref id="41" />
+			<pageref id="16" />
+			<pageref id="17" />
+			<pageref id="18" />
+			<pageref id="19" />
+			<pageref id="20" />
+			<pageref id="21" />
+			<pageref id="22" />
+			<pageref id="23" />
+			<pageref id="24" />
+			<!-- <pageref id="42" /> -->
+			<pageref id="43" />
+			<pageref id="44" />			
+			<pageref id="61" />
+			<pageref id="62" />
+			<pageref id="63" />
+		</path>
+		<path name="Wolf" id="2">
+			<pageref id="5" />
+			<pageref id="6" />
+			<pageref id="45" />
+			<pageref id="46" />
+			<pageref id="47" />
+			<pageref id="48" />
+			<pageref id="49" />
+			<pageref id="50" />
+			<pageref id="51" />
+			<pageref id="52" />
+			<pageref id="53" />
+			<pageref id="54" />
+			<pageref id="55" />
+			<pageref id="56" />
+			<pageref id="10" />
+			<pageref id="11" />
+			<pageref id="12" />
+			<pageref id="13" />
+			<pageref id="14" />
+			<pageref id="15" />
+			<pageref id="16" />
+			<pageref id="17" />
+			<pageref id="57" />
+			<pageref id="58" />
+			<pageref id="59" />
+			<pageref id="60" />
+			<pageref id="61" />
+			<pageref id="62" />
+			<pageref id="63" />
+		</path>
+		<path name="Grandma" id="3">
+			<pageref id="64" />
+			<pageref id="65" />
+			<pageref id="66" />
+			<pageref id="51" />
+			<pageref id="52" />
+			<pageref id="53" />
+			<pageref id="67" />
+			<pageref id="68" />
+			<pageref id="69" />
+			<pageref id="19" />
+			<pageref id="20" />
+			<pageref id="21" />
+			<pageref id="22" />
+			<pageref id="23" />
+			<pageref id="24" />
+			<pageref id="25" />
+		</path>
+	</story>
+</jarnaby>
