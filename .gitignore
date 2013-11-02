@@ -1,2 +1,6 @@
 *.class
 
+/nbproject
+/build
+build.xml
+

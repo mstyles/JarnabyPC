@@ -1,6 +1,7 @@
 package edu.byuh.cis.jarnaby;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ import java.util.Map;
 
 import javax.imageio.spi.IIORegistry;
 import javax.imageio.spi.ImageReaderSpi;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,7 +36,6 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
 public class Main extends JFrame implements ActionListener, KeyListener {
-
 	private static Main instance = null;
 	private boolean testing;
 	private static Canvas canvas;
@@ -43,10 +44,14 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 	private final static String PREVIOUS_PAGE = "<";
 	private final static String AERIAL_VIEW = "MAP";
 	private final static String NEXT_PAGE = ">";
+	private final static String LOAD = "Load";
+	private final static String NEW = "New";
 	private static Map<Integer, Path> paths;
 	private static Map<Integer, Page> pages = new HashMap<Integer, Page>();
 	//private Map<Page, List<Path>> usedBy = new HashMap<Page, List<Path>>();
-
+	
+	private JPanel mainPanel;
+	private JPanel start_menu;
 
 	public static Main instance() {
 		if(instance == null) {
@@ -60,33 +65,57 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		//show the user a list of installed stories
 		//let user pick one
 		//load xml and go.
-		//FOR NOW, just use LRRH.
+		//FOR NOW, just[ use LRRH.
 		//setTitle("Infocomics 2010");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(Config.X_RESN, Config.Y_RESN+130);
-		testing = false;
+		testing = true;
 
 		canvas = new Canvas();
-		JPanel mainPanel = new JPanel();
+		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
-		mainPanel.add(buildToolBar(), BorderLayout.SOUTH);
-		mainPanel.add(canvas, BorderLayout.CENTER);
-		setContentPane(mainPanel);
+		
+		start_menu = new JPanel();
+		start_menu.setLayout(new BoxLayout(start_menu, BoxLayout.PAGE_AXIS));
+		mainPanel.add(start_menu);
 
+		JButton load_btn = new JButton(LOAD);
+		load_btn.addActionListener(this);
+		start_menu.add(load_btn);
+		JButton create_btn = new JButton(NEW);
+		create_btn.addActionListener(this);
+		start_menu.add(create_btn);
+//		mainPanel.add(buildToolBar(), BorderLayout.SOUTH);
+//		mainPanel.add(canvas, BorderLayout.CENTER);
+		setContentPane(mainPanel);
+		
 		if (testing) {
 			testing();
 		} else {
 
-			try {
-				loadState(new File(Config.getStoryPath() + Config.storyPrefix + ".xml"));
-			} catch (SAXException e) {
-				Main.say("invalid XML!");
-			} catch (IOException e) {
-				Main.say("cannot find file.");
-			}
+		
 		}
 		
 		setVisible(true);
+	}
+
+	private void startReader()
+	{
+		mainPanel.remove(mainPanel.getComponent(0));
+		
+//		Main.say(mainPanel.getComponents().length);
+		mainPanel.add(buildToolBar(), BorderLayout.SOUTH);
+		mainPanel.add(canvas, BorderLayout.CENTER);
+		
+		revalidate();
+		
+		try {
+			loadState(new File(Config.getStoryPath() + Config.storyPrefix + ".xml"));
+		} catch (SAXException e) {
+			Main.say("invalid XML!");
+		} catch (IOException e) {
+			Main.say("cannot find file.");
+		}
 	}
 
 	private void loadState(File f) throws SAXException, IOException {
@@ -145,8 +174,6 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 	}
 
 
-
-
 	public static void main(String[] args) {
 		//this makes the GUI adopt the look-n-feel of the windowing system (Windows/X/Mac)
 		try {
@@ -167,6 +194,7 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
+		Main.say(cmd);
 		if (cmd.equals(PREVIOUS_PAGE)) {
 			canvas.backOnePage();
 		}
@@ -176,6 +204,9 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		if (cmd.equals(AERIAL_VIEW)) {
 			canvas.toggleMode();
 			Main.say("go to vistrail view");
+		}
+		if (cmd.equals(LOAD)) {
+			startReader();
 		}
 	}
 
