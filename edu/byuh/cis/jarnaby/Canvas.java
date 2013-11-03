@@ -33,13 +33,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	private static Map<Integer, Page> pages = new HashMap<Integer, Page>();
 
 	public Canvas() {
-		super();
-		currentPath = new PathIterator();
-		storyMode = true;
-		addMouseListener(this);
-		addMouseMotionListener(this);
-		addMouseWheelListener(this);
-		
+        super();
+        currentPath = new PathIterator();
+        storyMode = true;
+        addMouseListener(this);
+        addMouseMotionListener(this);
+        addMouseWheelListener(this);
 	}
 
 	public void setPaths(Map<Integer, Path> paths, Collection<Page> pages) {

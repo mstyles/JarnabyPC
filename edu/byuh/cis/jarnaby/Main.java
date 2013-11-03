@@ -85,25 +85,13 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		JButton create_btn = new JButton(NEW);
 		create_btn.addActionListener(this);
 		start_menu.add(create_btn);
-//		mainPanel.add(buildToolBar(), BorderLayout.SOUTH);
-//		mainPanel.add(canvas, BorderLayout.CENTER);
 		setContentPane(mainPanel);
-		
-		if (testing) {
-			testing();
-		} else {
-
-		
-		}
 		
 		setVisible(true);
 	}
 
 	private void startReader()
 	{
-		mainPanel.remove(mainPanel.getComponent(0));
-		
-//		Main.say(mainPanel.getComponents().length);
 		mainPanel.add(buildToolBar(), BorderLayout.SOUTH);
 		mainPanel.add(canvas, BorderLayout.CENTER);
 		
@@ -149,8 +137,6 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		}
 	}
 
-
-
 	private JPanel buildToolBar() {
 		JPanel bar = new JPanel();
 		JButton backButton = new JButton(PREVIOUS_PAGE);
@@ -167,12 +153,6 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		bar.add(nextButton);
 		return bar;
 	}
-
-	private void testing() {
-	//	Page p0 = new Page(0, new ImageIcon("stories/lrrh/page0.png"));
-	//	canvas.setCurrentPage(p0);
-	}
-
 
 	public static void main(String[] args) {
 		//this makes the GUI adopt the look-n-feel of the windowing system (Windows/X/Mac)
@@ -194,7 +174,6 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
-		Main.say(cmd);
 		if (cmd.equals(PREVIOUS_PAGE)) {
 			canvas.backOnePage();
 		}
@@ -206,7 +185,21 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 			Main.say("go to vistrail view");
 		}
 		if (cmd.equals(LOAD)) {
+            mainPanel.remove(mainPanel.getComponent(0));
 			startReader();
+		}
+        if (cmd.equals(NEW)) {
+            mainPanel.remove(mainPanel.getComponent(0));
+			File folder = new File("stories");
+            File[] listOfFiles = folder.listFiles();
+            String[] story_names = new String[listOfFiles.length];
+
+            for (int i = 0; i < listOfFiles.length; i++) {
+                if (listOfFiles[i].isDirectory()) {
+                    story_names[i] = listOfFiles[i].getName();
+                    System.out.println(listOfFiles[i].getName());
+                }
+            }
 		}
 	}
 
