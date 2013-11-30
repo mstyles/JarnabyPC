@@ -90,40 +90,53 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		setVisible(true);
 	}
 
+	/**
+	 * Switch to story UI, load story from file into canvas
+	 */
 	private void startReader()
 	{
-		mainPanel.add(buildToolBar(), BorderLayout.SOUTH);
-		mainPanel.add(canvas, BorderLayout.CENTER);
-		
-		revalidate();
-		
+		gotoStoryView();
 		try {
-			loadState(new File(Config.getStoryPath() + Config.storyPrefix + ".xml"));
+			loadStory(new File(Config.getStoryPath() + Config.storyPrefix + ".xml"));
 		} catch (SAXException e) {
 			Main.say("invalid XML!");
 		} catch (IOException e) {
 			Main.say("cannot find file.");
 		}
 	}
+	
+	private void gotoStoryView()
+	{
+		mainPanel.add(buildToolBar(), BorderLayout.SOUTH);
+		mainPanel.add(canvas, BorderLayout.CENTER);
+		revalidate();
+	}
 
-	private void loadState(File f) throws SAXException, IOException {
-		//load the input file!!
-		XMLReader xr = XMLReaderFactory.createXMLReader();
-		StoryParser state = new StoryParser();
-		xr.setContentHandler(state);
-		xr.setErrorHandler(state);
-		FileReader r = new FileReader(f);
-		xr.parse(new InputSource(r));
+	/**
+	 * Reads a story xml file and parses it into a Story object, then
+	 * initializes the canvas to begin displaying the story
+	 * @param story_file
+	 * @throws SAXException
+	 * @throws IOException
+	 */
+	private void loadStory(File story_file) throws SAXException, IOException {
+		//load the input file
+		XMLReader xml_reader = XMLReaderFactory.createXMLReader();
+		StoryParser story = new StoryParser();
+		xml_reader.setContentHandler(story);
+		xml_reader.setErrorHandler(story);
+		FileReader file_reader = new FileReader(story_file);
+		xml_reader.parse(new InputSource(file_reader));
 
 		//pull data from the state.
-		paths = state.getPaths();
-		pages = state.getPages();
-		setTitle(state.getStoryTitle() /*+ " - Jarnaby"*/);
+		paths = story.getPaths();
+		pages = story.getPages();
+		setTitle(story.getStoryTitle());
 		resolveLinks();
-		Path dp = state.getDefaultPath();
+		Path dp = story.getDefaultPath();
 		canvas.set(dp, 0);
 		canvas.setPaths(paths, pages.values());
-		canvas.setPathsPerPage(state.getPathListPerPage());
+		canvas.setPathsPerPage(story.getPathListPerPage());
 		canvas.addPagesPaths(paths, pages);
 	}
 
@@ -137,6 +150,11 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		}
 	}
 
+	/**
+	 * Builds navigation toolbar for story UI.
+	 * Includes 'previous' & 'next' buttons, as well as 'aerial view'
+	 * @return JPanel
+	 */
 	private JPanel buildToolBar() {
 		JPanel bar = new JPanel();
 		JButton backButton = new JButton(PREVIOUS_PAGE);
@@ -190,17 +208,25 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		}
         if (cmd.equals(NEW)) {
             mainPanel.remove(mainPanel.getComponent(0));
-			File folder = new File("stories");
-            File[] listOfFiles = folder.listFiles();
-            String[] story_names = new String[listOfFiles.length];
-
-            for (int i = 0; i < listOfFiles.length; i++) {
-                if (listOfFiles[i].isDirectory()) {
-                    story_names[i] = listOfFiles[i].getName();
-                    System.out.println(listOfFiles[i].getName());
-                }
-            }
+            gotoStoryView();
 		}
+	}
+	
+	/**
+	 * Check directory for available stories
+	 */
+	private void getAvailableStories()
+	{
+		File folder = new File("stories");
+        File[] listOfFiles = folder.listFiles();
+        String[] story_names = new String[listOfFiles.length];
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (listOfFiles[i].isDirectory()) {
+                story_names[i] = listOfFiles[i].getName();
+                System.out.println(listOfFiles[i].getName());
+            }
+        }
 	}
 
 	public static int getWindowWidth() {
