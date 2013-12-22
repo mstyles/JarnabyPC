@@ -71,4 +71,20 @@ public class Link {
 	public void setText(String t) {
 		text = t;
 	}
+	
+	/**
+	 * Generate xml representation of the link
+	 * @return xml string
+	 */
+	public String toXml() {
+		String link_xml = "";
+		link_xml += "<link pathref=\""+ toPath.getID() +"\" ";
+		link_xml += "pageref=\""+ toPageID +"\" ";
+		link_xml += "text=\""+ text +"\">";
+		
+		link_xml += "<rect x=\""+ rect.getX() +"\" y=\""+ rect.getY() +"\" ";
+		link_xml += "width=\""+ rect.getWidth() + "\" height=\""+ rect.getHeight() +"\" />";
+		link_xml += "</link>";
+		return link_xml;
+	}
 }

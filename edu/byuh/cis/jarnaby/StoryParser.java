@@ -7,7 +7,11 @@ import java.awt.Rectangle;
 import java.awt.TexturePaint;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -244,6 +248,76 @@ public class StoryParser extends DefaultHandler {
 			usedBy.put(page, pathList);
 		}
 	}
+	
+	/**
+	 * Store xml-version of the story into a file
+	 */
+	public void exportStory()
+	{
+		String story_contents = storyToXml();
+		String folder_path = System.getProperty("user.dir"); //TODO
+		String file_name = storyTitle.replaceAll(" ", "_").toLowerCase() + ".xml";
+		String full_path = folder_path + "\\"+ file_name;
+		System.out.println("path is "+ full_path);
+		writeFile(full_path, story_contents);
+	}
+	
+	/**
+	 * Convert loaded story into xml string
+	 */
+	private String storyToXml()
+	{
+		String version = "1.0";
+		String story = "<jarnaby version=\"" + version + "\">";
+		story += "<story>";
+		String file_placeholder = "lrrh_wolf_pounce.png";
+		story += "<title file=\""+ file_placeholder +"\">"+ storyTitle +"</title>";
+		story += getImagesXml();
+		story += getPagesXml();
+		story += getPathsXml();
+		story += "</story>";
+		story += "</jarnaby>";
+		story = story.replaceAll(">", ">\r\n");
+		return story;
+	}
+	
+	/**
+	 * Generate xml for the story's images
+	 */
+	private String getImagesXml()
+	{
+		String images_xml = "";
+		for (Map.Entry<String, ImageIcon> img : images.entrySet()) {
+			ImageIcon icon = img.getValue();
+			String filename = icon.toString().replaceAll(".*/","");
+			images_xml += "<image id=\""+ img.getKey() +"\" file=\""+filename+"\" />";
+		}
+		return images_xml;
+	}
+	
+	/**
+	 * Generate xml for the story's pages
+	 */
+	private String getPagesXml()
+	{
+		String pages_xml = "";
+		for (Page page : pages.values()) {
+			pages_xml += page.toXml();
+		}
+		return pages_xml;
+	}
+	
+	/**
+	 * Generate xml for the story's paths
+	 */
+	private String getPathsXml()
+	{
+		String paths_xml = "";
+		for (Path path : paths.values()) {
+			paths_xml += path.toXml();
+		}
+		return paths_xml;
+	}
 
 	public Map<Integer, Path> getPaths() {
 		return paths;
@@ -262,10 +336,6 @@ public class StoryParser extends DefaultHandler {
 		return pages;
 	}
 	
-//	private String deleteExcessWhitespace(String s) {
-//		for 
-//	}
-
 	public Paint getGraphBackground() {
 		return graphBackground;
 	}
@@ -288,5 +358,33 @@ public class StoryParser extends DefaultHandler {
 		}
 	}
 
-	
+	/**
+	 * Write content to file_path, creating directories and/or file if needed
+	 * @param file_path
+	 * @param content
+	 */
+	private void writeFile(String file_path, String content) {
+		try {
+			File file = new File(file_path);
+			
+			if(!file.getParentFile().exists()) {
+				System.out.println("Creating new directory...");
+			     file.getParentFile().mkdirs();
+			}
+ 
+			if (!file.exists()) {
+				System.out.println("Creating new file...");
+				file.createNewFile();
+			}
+ 
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(content);
+			bw.close();
+ 
+			System.out.println("Done");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

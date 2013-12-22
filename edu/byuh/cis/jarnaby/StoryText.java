@@ -31,6 +31,10 @@ public class StoryText {
 		texts.add(t);
 	}
 	
+	public List<String> getTexts() {
+		return texts;
+	}
+	
 	public void setLinks(List<Link> linx) {
 		links = linx;
 	}

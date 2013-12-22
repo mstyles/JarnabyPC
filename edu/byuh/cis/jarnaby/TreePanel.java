@@ -314,19 +314,19 @@ public class TreePanel {
 						//Find a list of all the paths that use that page.
 						//If the current path is one of them, use it.
 						//else, randomly pick one of the other paths.
-						List<Path> paths = canvas.getPathListPerPage(toPage);
-						if (paths.contains(canvas.getCurrentPath())) {
+//						List<Path> paths = canvas.getPathListPerPage(toPage);
+//						if (paths.contains(canvas.getCurrentPath())) {
 							toPath = canvas.getCurrentPath();
-						} else {
-							int randomPath = (int)(Math.random()*paths.size());
-//							toPath = paths.get(randomPath);
-							toPath = node.getNewPath();
-							changingPaths = true;
-							transitionalY = node.getY();
-//							Main.say("going to Y:"+ transitionalY);
-							Main.say("New PATH: "+ toPath);
-							animate(toPage);
-						}
+//						} else {
+//							int randomPath = (int)(Math.random()*paths.size());
+////							toPath = paths.get(randomPath);
+//							toPath = node.getNewPath();
+//							changingPaths = true;
+//							transitionalY = node.getY();
+////							Main.say("going to Y:"+ transitionalY);
+//							Main.say("New PATH: "+ toPath);
+//							animate(toPage);
+//						}
 						//dirty = true;
 						//canvas.set(toPath, toPath.getIndexForPage(toPage));
 						if (!changingPaths) {

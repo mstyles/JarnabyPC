@@ -15,15 +15,15 @@ import javax.swing.ImageIcon;
 public class Page {
 	private List<Link> links;
 	private ImageIcon background;
-	private StoryText text;
+	private StoryText story_text;
 	int id;
 	String pictID;//for convenience of XML parser; unused otherwise
 	private boolean visited;
 	private Link backlink;
 
-	private Page(int id) {
+	public Page(int id) {
 		this.id = id;
-		text = new StoryText();
+		story_text = new StoryText();
 		links = new ArrayList<Link>();
 		visited = false;
 		backlink = null;
@@ -41,8 +41,8 @@ public class Page {
 	public void draw(Graphics2D g, boolean thumbnail) {
 		background.paintIcon(null, g, 0, 0);
 		if (!thumbnail) {
-			text.setLinks(links);
-			text.draw(g);
+			story_text.setLinks(links);
+			story_text.draw(g);
 
 			//draw the dogear if there's a link on this page
 			//(and if we're not already on the link's path!)
@@ -53,6 +53,23 @@ public class Page {
 //						Config.dogEar.x + Config.dogEar.width, Config.dogEar.height);
 //			}
 		}
+	}
+	
+	/**
+	 * Generate xml representation of the page
+	 * @return xml string
+	 */
+	public String toXml() {
+		String page_xml = "";
+		page_xml += "<page id=\""+ id +"\" image_id=\""+ pictID +"\">";
+		for (String text : story_text.getTexts()) {
+			page_xml += "<text>"+text+"</text>";
+		}
+		for (Link link : links) {
+			page_xml += link.toXml();
+		}
+		page_xml += "</page>";
+		return page_xml;
 	}
 	
 	public void draw(Graphics2D g) {
@@ -79,7 +96,11 @@ public class Page {
 //	}
 
 	public void addText(String s) {
-		text.addText(s);
+		story_text.addText(s);
+	}
+	
+	public StoryText getStoryText() {
+		return story_text;
 	}
 
 	public void addLink(Link ln) {
@@ -100,17 +121,17 @@ public class Page {
 	}
 
 	public Link handleClick(Point p) {
-		Link linq = null;
+		Link link = null;
 		//check for links in the picture
 		for (Link ln : links) {
 			if (ln.contains(p) && ln.getPath() != Main.getCurrentPath()) {
-				linq = ln;
+				link = ln;
 				break;
 			}
 		}
 		//check for links in the text
-		if (linq == null) {
-			linq = text.handleClick(p);
+		if (link == null) {
+			link = story_text.handleClick(p);
 		}
 		//check for links in the dogear
 //		if (linq == null) {
@@ -121,7 +142,7 @@ public class Page {
 //			}
 //		}
 		
-		return linq;
+		return link;
 	}
 
 	public boolean isVisited() {

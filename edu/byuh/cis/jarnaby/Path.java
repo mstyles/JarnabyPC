@@ -12,13 +12,13 @@ public class Path {
 	List<Integer> placeholders; //for XML parser
 	private int id;
 	private String name;
-	private boolean defaultPath;
+	private boolean is_default;
 
 	public Path() {
 		pages = new ArrayList<Page>();
 		//pageMap = new HashMap<Integer, Page>();
 		placeholders = new ArrayList<Integer>();
-		defaultPath = false;
+		is_default = false;
 	}
 
 	public Path(String name, int id) {
@@ -67,6 +67,20 @@ public class Path {
 	public String toString() {
 		return name;
 	}
+	
+	/**
+	 * Generate xml representation of the path
+	 * @return xml string
+	 */
+	public String toXml() {
+		String default_str = is_default ? "true" : "false";
+		String path_xml = "<path name=\""+ name +"\" id=\""+ id +"\" default=\""+ default_str +"\" >";
+		for (Page page : pages) {
+			path_xml += "<pageref id=\""+ page.getID() +"\" />";
+		}
+		path_xml += "</path>";
+		return path_xml;
+	}
 
 	public int getIndexForPage(Page p) {
 		for (int i=0; i<pages.size(); ++i) {
@@ -78,11 +92,11 @@ public class Path {
 	}
 
 	public void makeDefault() {
-		defaultPath = true;	
+		is_default = true;	
 	}
 
 	public boolean isDefault() {
-		return defaultPath;
+		return is_default;
 	}
 
 	public List<Page> getPages() {

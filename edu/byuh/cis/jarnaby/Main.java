@@ -46,12 +46,16 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 	private final static String NEXT_PAGE = ">";
 	private final static String LOAD = "Load";
 	private final static String NEW = "New";
+	private final static String IMG = "Image";
+	private final static String TXT = "Text";
 	private static Map<Integer, Path> paths;
 	private static Map<Integer, Page> pages = new HashMap<Integer, Page>();
 	//private Map<Page, List<Path>> usedBy = new HashMap<Page, List<Path>>();
 	
 	private JPanel mainPanel;
 	private JPanel start_menu;
+	
+	private StoryParser story;
 
 	public static Main instance() {
 		if(instance == null) {
@@ -99,10 +103,22 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		try {
 			loadStory(new File(Config.getStoryPath() + Config.storyPrefix + ".xml"));
 		} catch (SAXException e) {
-			Main.say("invalid XML!");
+			Main.say("invalid XML! "+e.getMessage());
 		} catch (IOException e) {
 			Main.say("cannot find file.");
 		}
+	}
+	
+	private void startEditor()
+	{
+		JButton add_image_btn = new JButton(IMG);
+		add_image_btn.addActionListener(this);
+		canvas.add(add_image_btn);
+		JButton add_txt_btn = new JButton(TXT);
+		add_txt_btn.addActionListener(this);
+		canvas.add(add_txt_btn);
+		gotoStoryView();
+//		revalidate();
 	}
 	
 	private void gotoStoryView()
@@ -122,7 +138,7 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 	private void loadStory(File story_file) throws SAXException, IOException {
 		//load the input file
 		XMLReader xml_reader = XMLReaderFactory.createXMLReader();
-		StoryParser story = new StoryParser();
+		story = new StoryParser();
 		xml_reader.setContentHandler(story);
 		xml_reader.setErrorHandler(story);
 		FileReader file_reader = new FileReader(story_file);
@@ -136,7 +152,7 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		Path dp = story.getDefaultPath();
 		canvas.set(dp, 0);
 		canvas.setPaths(paths, pages.values());
-		canvas.setPathsPerPage(story.getPathListPerPage());
+//		canvas.setPathsPerPage(story.getPathListPerPage());
 		canvas.addPagesPaths(paths, pages);
 	}
 
@@ -159,16 +175,19 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		JPanel bar = new JPanel();
 		JButton backButton = new JButton(PREVIOUS_PAGE);
 		backButton.setToolTipText("Go to the previous page in the current character's story");
+		backButton.addActionListener(this);
 		treeButton = new JToggleButton(AERIAL_VIEW);
 		treeButton.setToolTipText("See an aerial view of the current character's story");
+		treeButton.addActionListener(this);
 		JButton nextButton = new JButton(NEXT_PAGE);
 		nextButton.setToolTipText("Go to the next page in the current character's story");
-		backButton.addActionListener(this);
-		treeButton.addActionListener(this);
 		nextButton.addActionListener(this);
+//		JButton exportButton = new JButton("test");
+//		exportButton.addActionListener(this);
 		bar.add(treeButton);
 		bar.add(backButton);
 		bar.add(nextButton);
+//		bar.add(exportButton);
 		return bar;
 	}
 
@@ -208,7 +227,10 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		}
         if (cmd.equals(NEW)) {
             mainPanel.remove(mainPanel.getComponent(0));
-            gotoStoryView();
+            startEditor();
+		}
+        if (cmd.equals("test")) {
+        	story.exportStory();
 		}
 	}
 	
